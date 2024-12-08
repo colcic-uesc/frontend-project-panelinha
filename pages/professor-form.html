@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário - Gerenciador Acadêmico</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/form.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <span class="material-icons" style="font-size: 48px; color: var(--primary-color);">school</span>
+            <h1>Gerenciador Acadêmico</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="list.html">Professores</a></li>
+                <li><a href="list.html">Estudantes</a></li>
+                <li><a href="list.html">Projetos</a></li>
+                <li><a href="list.html">Habilidades</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Cadastro de Professor</h2>
+
+            <form id="professorForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Nome Completo*</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail*</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefone*</label>
+                    <input type="tel" id="phone" name="phone" required pattern="\(\d{2}\)\s\d{5}-\d{4}">
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha*</label>
+                    <input type="password" id="password" name="password" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="department">Departamento*</label>
+                    <select id="department" name="department" required>
+                        <option value="">Selecione...</option>
+                        <option value="DCET">DCET</option>
+                        <option value="DFCH">DFCH</option>
+                        <option value="DLA">DLA</option>
+                    </select>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Tipo de Vínculo*</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="vinculo" value="efetivo" required>
+                            Efetivo
+                        </label>
+                        <label>
+                            <input type="radio" name="vinculo" value="substituto" required>
+                            Substituto
+                        </label>
+                    </div>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Áreas de Atuação*</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="areas" value="ensino" required>
+                            Ensino
+                        </label>
+                        <label>
+                            <input type="checkbox" name="areas" value="pesquisa" required>
+                            Pesquisa
+                        </label>
+                        <label>
+                            <input type="checkbox" name="areas" value="extensao" required>
+                            Extensão
+                        </label>
+                    </div>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="bio">Biografia*</label>
+                    <textarea id="bio" name="bio" required></textarea>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <button type="button" class="btn btn-secondary" onclick="history.back()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sistema Panelinha. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../assets/js/validation.js"></script>
+    <script src="../assets/js/api.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Habilidade - Gerenciador Acadêmico</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/form.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="material-icons" style="font-size: 48px; color: var(--primary-color);">school</span>
+            <h1>Gerenciador Acadêmico</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="professor-list.html">Professores</a></li>
+                <li><a href="student-list.html">Estudantes</a></li>
+                <li><a href="project-list.html">Projetos</a></li>
+                <li><a href="skill-list.html" class="active">Habilidades</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Cadastro de Habilidade</h2>
+            <form id="skillForm" novalidate>
+                <div class="form-group">
+                    <label for="title">Título*</label>
+                    <input type="text" id="title" name="title" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Descrição*</label>
+                    <textarea id="description" name="description" required></textarea>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <button type="button" class="btn btn-secondary" onclick="history.back()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gerenciador Acadêmico. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../assets/js/validation.js"></script>
+    <script src="../assets/js/api.js"></script>
+</body>
+</html> 
