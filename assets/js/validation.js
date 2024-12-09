@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         if (validateForm()) {
-            // Aqui você pode adicionar a lógica para enviar os dados para a API
             console.log('Formulário válido, enviando dados...');
         }
     });

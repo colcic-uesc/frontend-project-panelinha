@@ -11,6 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -160,6 +161,10 @@ nav a.active {
     transform: translateY(-5px);
 }
 
+.card-actions {
+    margin-top: .5rem;
+}
+
 /* Botões */
 .btn {
     background-color: var(--primary-color);
@@ -174,6 +179,33 @@ nav a.active {
 
 .btn:hover {
     background-color: var(--secondary-color);
+}
+
+.btn-view,
+.btn-edit,
+.btn-delete {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: .5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    border: none;
+    outline: none;
+    transition: .2s;
+}
+
+.btn-delete {
+    background-color: #a32e26;
+}
+
+.btn-view:hover,
+.btn-edit:hover,
+.btn-delete:hover {
+    opacity: .8;
+    cursor: pointer;
 }
 
 /* Footer */
