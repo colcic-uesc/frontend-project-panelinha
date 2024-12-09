@@ -1,34 +1,41 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('professorForm');
-    
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (validateForm()) {
-            console.log('Formulário válido, enviando dados...');
-        }
-    });
+    const formIds = ['professorForm', 'studentForm', 'projectForm', 'skillForm'];
 
-    // Validação de campos individuais
-    const inputs = form.querySelectorAll('input, select, textarea');
-    inputs.forEach(input => {
-        input.addEventListener('blur', function() {
-            validateField(input);
-        });
-    });
+    formIds.forEach(formId => {
+        const form = document.getElementById(formId);
+        
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (validateForm(form)) {
+                    console.log(`Formulário ${formId} válido, enviando dados...`);
+                }
+            });
 
-    // Formatação do telefone
-    const phoneInput = document.getElementById('phone');
-    phoneInput.addEventListener('input', function(e) {
-        let value = e.target.value.replace(/\D/g, '');
-        if (value.length <= 11) {
-            value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
-            e.target.value = value;
+            // Validação de campos individuais
+            const inputs = form.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    validateField(input);
+                });
+            });
+
+            // Formatação do telefone
+            const phoneInput = form.querySelector('#phone');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length <= 11) {
+                        value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+                        e.target.value = value;
+                    }
+                });
+            }
         }
     });
 });
 
-function validateForm() {
-    const form = document.getElementById('professorForm');
+function validateForm(form) {
     let isValid = true;
 
     // Validar campos obrigatórios
@@ -102,4 +109,4 @@ function validateField(field) {
     }
 
     return isValid;
-} 
+}
