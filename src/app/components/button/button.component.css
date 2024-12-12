@@ -46,7 +46,7 @@
   background-color: #a32e26;
 }
 
-.btn-active {
+.btn-primary {
   color: var(--white);
   background-color: var(--primary-color);
 }

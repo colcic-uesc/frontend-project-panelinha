@@ -11,6 +11,6 @@ import { CommonModule } from '@angular/common';
 export class ButtonComponent {
   @Input() label: string = 'Botão';
   @Input() type: string = 'button';
-  @Input() theme: 'default' | 'btn-active' | 'btn-view' | 'btn-delete' = 'default';
+  @Input() theme: 'default' | 'btn-primary' | 'btn-view' | 'btn-delete' = 'default';
   @Input() disabled: boolean = false;
 }

@@ -17,3 +17,10 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+
+@media (max-width: 768px) {
+  .dashboard {
+      grid-template-columns: 1fr;
+      padding: 1rem;
+  }
+}

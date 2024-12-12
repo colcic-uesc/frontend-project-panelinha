@@ -1,19 +1,45 @@
 <nav>
   <ul>
     <li>
-      <app-button theme="btn-active" (click)="navigate('/')"> Home </app-button>
+      <app-button
+        [theme]="currentRoute === '/' ? 'btn-primary' : 'default'"
+        (click)="navigate('/')"
+      >
+        Home
+      </app-button>
     </li>
+
     <li>
-      <app-button theme="default" (click)="navigate('/teachers')"> Professores </app-button>
+      <app-button
+        [theme]="currentRoute === '/teachers' ? 'btn-primary' : 'default'"
+        (click)="navigate('/teachers')"
+      >
+        Professores
+      </app-button>
     </li>
+
     <li>
-      <app-button theme="default"> Estudantes </app-button>
+      <app-button
+        [theme]="currentRoute === '/students' ? 'btn-primary' : 'default'"
+      >
+        Estudantes
+      </app-button>
     </li>
+
     <li>
-      <app-button theme="default"> Projetos </app-button>
+      <app-button
+        [theme]="currentRoute === '/projects' ? 'btn-primary' : 'default'"
+      >
+        Projetos
+      </app-button>
     </li>
+
     <li>
-      <app-button theme="default"> Habilidades </app-button>
+      <app-button
+        [theme]="currentRoute === '/skills' ? 'btn-primary' : 'default'"
+      >
+        Habilidades
+      </app-button>
     </li>
   </ul>
 </nav>
