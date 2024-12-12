@@ -1,0 +1,58 @@
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.default {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  border-radius: 4px;
+  background: none;
+}
+
+.default:hover {
+  color: var(--primary-color);
+  background-color: rgba(63, 81, 181, 0.1);
+}
+
+.btn-view,
+.btn-delete {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  border: none;
+  outline: none;
+  transition: .2s;
+}
+
+.btn-delete {
+  background-color: #a32e26;
+}
+
+.btn-active {
+  color: var(--white);
+  background-color: var(--primary-color);
+}
+
+.btn-view:hover,
+.btn-delete:hover {
+  opacity: .8;
+  cursor: pointer;
+}

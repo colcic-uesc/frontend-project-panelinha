@@ -1,0 +1,26 @@
+header {
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.logo .material-icons-outlined {
+  font-size: 48px;
+  color: var(--primary-color);
+  transition: transform 0.3s ease;
+}
+
+.logo h1 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
