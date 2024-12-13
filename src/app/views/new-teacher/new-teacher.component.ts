@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from "../../components/button/button.component";
+import { TeacherService } from '../../services/teacher/teacher.service';
 
 @Component({
   selector: 'app-new-teacher',
@@ -20,6 +21,7 @@ export class NewTeacherComponent {
   ];
 
   constructor(
+    private teacherService: TeacherService,
     private router: Router,
     private fb: FormBuilder
   ) { }
@@ -75,7 +77,9 @@ export class NewTeacherComponent {
 
   onSubmit() {
     if (this.teacherForm.valid) {
-      console.log(this.teacherForm.value);
+      this.teacherService.addTeacher(this.teacherForm.value).subscribe(() => {
+        this.router.navigate(['/teachers']);
+      });
     } else {
       this.markFormAsTouched(this.teacherForm);
     }

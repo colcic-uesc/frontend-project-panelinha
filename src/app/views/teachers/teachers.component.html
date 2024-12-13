@@ -9,6 +9,16 @@
       </app-button>
   </div>
   <div class="card-grid">
+    @for (teacher of teachers; track teacher.id) {
+      <app-card
+        [id]="teacher.id"
+        [title]="teacher.name"
+        [info]="teacher.bio"
+        [email]="teacher.email"
+        (delete)="deleteTeacher($event)"
+      >
+      </app-card>
+    }
     <app-card></app-card>
   </div>
 </div>

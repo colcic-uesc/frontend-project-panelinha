@@ -3,8 +3,8 @@
   <p class="card-info">{{ info }}</p>
   <p class="card-email">{{ email }}</p>
   <div class="card-actions">
-    <app-button theme="btn-view">Visualizar</app-button>
-    <app-button theme="btn-view">Editar</app-button>
-    <app-button theme="btn-delete">Excluir</app-button>
+    <app-button theme="btn-view" (click)="navigate('teachers/' + id)">Visualizar</app-button>
+    <app-button theme="btn-view" (click)="navigate('teachers/' + id + '/edit')">Editar</app-button>
+    <app-button theme="btn-delete" (click)="deleteTeacher()">Excluir</app-button>
   </div>
 </div>
