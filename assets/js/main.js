@@ -12,27 +12,99 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-function loadItems(type) {
+async function loadItems(type) {
     const cardGrid = document.querySelector('.card-grid');
     const template = document.getElementById('card-template');
-    const data = getMockData(type);
 
-    cardGrid.innerHTML = '';
+    // Chamada ao endpoint para obter os dados dos professores
+    if (type === 'professors') {
+        const response = await fetch('http://localhost:8000/professors');
+        const data = await response.json();
 
-    data.forEach(item => {
-        const card = template.content.cloneNode(true);
+        cardGrid.innerHTML = '';
 
-        card.querySelector('.card-title').textContent = item.name;
-        card.querySelector('.card-email').textContent = item.email || '';
-        card.querySelector('.card-info').textContent = item.department || item.role || item.project || '';
+        data.forEach(item => {
+            const card = template.content.cloneNode(true);
 
-        // Adicionar eventos aos botões
-        card.querySelector('.btn-view').addEventListener('click', () => viewItem(type, item.id));
-        card.querySelector('.btn-edit').addEventListener('click', () => editItem(type, item.id));
-        card.querySelector('.btn-delete').addEventListener('click', () => deleteItem(type, item.id));
+            card.querySelector('.card-title').textContent = item.name;
+            card.querySelector('.card-email').textContent = item.email || '';
+            card.querySelector('.card-info').textContent = item.department || '';
 
-        cardGrid.appendChild(card);
-    });
+            // Adicionar eventos aos botões
+            card.querySelector('.btn-view').addEventListener('click', () => viewItem(type, item.id));
+            card.querySelector('.btn-edit').addEventListener('click', () => editItem(type, item.id));
+            card.querySelector('.btn-delete').addEventListener('click', () => deleteItem(type, item.id));
+
+            cardGrid.appendChild(card);
+        });
+    }
+
+    // Chamada ao endpoint para obter os dados dos estudantes
+    else if (type === 'students') {
+        const response = await fetch('http://localhost:8000/students');
+        const data = await response.json();
+
+        cardGrid.innerHTML = '';
+
+        data.forEach(item => {
+            const card = template.content.cloneNode(true);
+
+            card.querySelector('.card-title').textContent = item.name;
+            card.querySelector('.card-email').textContent = item.email || '';
+            card.querySelector('.card-info').textContent = item.course || '';
+
+            // Adicionar eventos aos botões
+            card.querySelector('.btn-view').addEventListener('click', () => viewItem(type, item.id));
+            card.querySelector('.btn-edit').addEventListener('click', () => editItem(type, item.id));
+            card.querySelector('.btn-delete').addEventListener('click', () => deleteItem(type, item.id));
+
+            cardGrid.appendChild(card);
+        });
+    }
+
+    // Chamada ao endpoint para obter os dados dos projetos
+    else if (type === 'projects') {
+        const response = await fetch('http://localhost:8000/projects');
+        const data = await response.json();
+
+        cardGrid.innerHTML = '';
+
+        data.forEach(item => {
+            const card = template.content.cloneNode(true);
+
+            card.querySelector('.card-title').textContent = item.title;
+            card.querySelector('.card-info').textContent = item.description || '';
+
+            // Adicionar eventos aos botões
+            card.querySelector('.btn-view').addEventListener('click', () => viewItem(type, item.id));
+            card.querySelector('.btn-edit').addEventListener('click', () => editItem(type, item.id));
+            card.querySelector('.btn-delete').addEventListener('click', () => deleteItem(type, item.id));
+
+            cardGrid.appendChild(card);
+        });
+    }
+
+    // Chamada ao endpoint para obter os dados das habilidades
+    else if (type === 'skills') {
+        const response = await fetch('http://localhost:8000/skills');
+        const data = await response.json();
+
+        cardGrid.innerHTML = '';
+
+        data.forEach(item => {
+            const card = template.content.cloneNode(true);
+
+            card.querySelector('.card-title').textContent = item.title;
+            card.querySelector('.card-info').textContent = item.description || '';
+
+            // Adicionar eventos aos botões
+            card.querySelector('.btn-view').addEventListener('click', () => viewItem(type, item.id));
+            card.querySelector('.btn-edit').addEventListener('click', () => editItem(type, item.id));
+            card.querySelector('.btn-delete').addEventListener('click', () => deleteItem(type, item.id));
+
+            cardGrid.appendChild(card);
+        });
+    }
 }
 
 function getMockData(type) {
