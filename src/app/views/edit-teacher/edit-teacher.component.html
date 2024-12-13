@@ -81,17 +81,17 @@
 
     <div class="form-group">
       <label>Áreas de Atuação*</label>
-      <div class="checkbox-group">
+      <div formArrayName="areas" class="checkbox-group">
         <label>
-          <input type="checkbox" name="areas" (change)="onAreaChange($event)" value="ensino" required />
+          <input type="checkbox" name="areas" formControlName="0" (change)="onAreaChange($event)" value="ensino" required />
           Ensino
         </label>
         <label>
-          <input type="checkbox" name="areas" (change)="onAreaChange($event)" value="pesquisa" required />
+          <input type="checkbox" name="areas" formControlName="1" (change)="onAreaChange($event)" value="pesquisa" required />
           Pesquisa
         </label>
         <label>
-          <input type="checkbox" name="areas" (change)="onAreaChange($event)" value="extensao" required />
+          <input type="checkbox" name="areas" formControlName="2" (change)="onAreaChange($event)" value="extensao" required />
           Extensão
         </label>
       </div>

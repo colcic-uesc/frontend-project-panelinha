@@ -41,7 +41,11 @@ export class EditTeacherComponent {
       phone: ['(75) 99192-2151', [Validators.required, Validators.pattern(/^\(\d{2}\) \d{5}-\d{4}$/)]],
       department: ['DCET', Validators.required],
       vinculo: ['efetivo', Validators.required],
-      areas: [['pesquisa'], Validators.required],
+      areas: this.fb.array([
+        this.fb.control('ensino'),
+        this.fb.control('pesquisa'),
+        this.fb.control('extensao')
+      ], Validators.required),
       bio: ['AAAAAAaaaaaaaaaaaaaaAAA', [Validators.required, Validators.minLength(10)]]
     });
   }
