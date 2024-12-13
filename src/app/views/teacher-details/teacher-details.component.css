@@ -1,0 +1,56 @@
+.teacher-details-container {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--background-color);
+}
+
+.details-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.details-header h2 {
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.teacher-card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.teacher-info h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.teacher-info p {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.teacher-info span {
+  font-weight: normal;
+  color: var(--text-color);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.actions .btn {
+  min-width: 120px;
+}
+
+@media (max-width: 768px) {
+  .actions {
+    flex-wrap: wrap;
+  }
+}

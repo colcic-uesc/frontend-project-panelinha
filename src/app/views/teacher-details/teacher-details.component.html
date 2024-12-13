@@ -1,0 +1,23 @@
+<div class="teacher-details-container">
+  <header class="details-header">
+    <h2>Detalhes do Professor</h2>
+  </header>
+
+  <div class="teacher-card">
+    <div class="teacher-info">
+      <h3>Nome: <span>João da Silva</span></h3>
+      <p>Email: <span>joao.silva&#64;example.com</span></p>
+      <p>Telefone: <span>11 99999-9999</span></p>
+      <p>Departamento: <span>DCE</span></p>
+      <p>Tipo de vínculo: <span>Efetivo</span></p>
+      <p>Áreas de atuação: <span>Ensino, Pesquisa, Extensão</span></p>
+      <p>Biografia: <span>Professor do curso de Ciência da Computação na Universidade Estadual de Santa Cruz.</span></p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <app-button theme="btn-view" (click)="editTeacher()">Editar</app-button>
+    <app-button theme="btn-delete" (click)="deleteTeacher()">Excluir</app-button>
+    <app-button theme="btn-view" (click)="navigateBack()">Voltar</app-button>
+  </div>
+</div>
