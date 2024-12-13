@@ -1,0 +1,121 @@
+<div class="form-container">
+  <h2>Edição de Professor</h2>
+
+  <form [formGroup]="teacherForm" (submit)="onSubmit()" novalidate>
+    <div class="form-group">
+      <label for="name">Nome Completo*</label>
+      <input type="text" id="name" formControlName="name" [ngClass]="{'error': form['name'].invalid && form['name'].touched}" required />
+      @if (form['name'].invalid && form['name'].touched) {
+        <span class="error-message">
+          <div *ngIf="form['name'].errors?.['required']">Nome é obrigatório</div>
+          <div *ngIf="form['name'].errors?.['minlength']">Nome deve ter no mínimo 3 caracteres</div>
+        </span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="email">E-mail*</label>
+      <input type="email" id="email" formControlName="email" [ngClass]="{'error': form['email'].invalid && form['email'].touched}" required />
+      @if (form['email'].invalid && form['email'].touched) {
+        <span class="error-message">
+          <div *ngIf="form['name'].errors?.['required']">E-mail é obrigatório</div>
+          <div *ngIf="form['name'].errors?.['email']">E-mail inválido</div>
+        </span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Telefone*</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        formControlName="phone"
+        [ngClass]="{'error': form['phone'].invalid && form['phone'].touched}"
+        placeholder="(99) 99999-9999"
+        (input)="formatPhone($event)"
+        maxlength="16"
+        required
+      />
+      @if (form['phone'].invalid && form['phone'].touched) {
+        <span class="error-message">
+          <div *ngIf="form['phone'].errors?.['required']">Telefone é obrigatório</div>
+          <div *ngIf="form['phone'].errors?.['pattern']">Formato de telefone inválido</div>
+        </span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="department">Departamento*</label>
+      <select id="department" name="department" formControlName="department" [ngClass]="{'error': form['department'].invalid && form['department'].touched}" required>
+        <option value="">Selecione...</option>
+        <option value="DCET">DCET</option>
+        <option value="DFCH">DFCH</option>
+        <option value="DLA">DLA</option>
+      </select>
+      @if (form['department'].invalid && form['department'].touched) {
+        <span class="error-message">
+          <div *ngIf="form['department'].errors?.['required']">Departamento é obrigatório</div>
+        </span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Tipo de Vínculo*</label>
+      <div class="radio-group">
+        <label>
+          <input type="radio" name="vinculo" formControlName="vinculo" value="efetivo" required />
+          Efetivo
+        </label>
+        <label>
+          <input type="radio" name="vinculo" formControlName="vinculo" value="substituto" required />
+          Substituto
+        </label>
+      </div>
+      @if (form['vinculo'].invalid && form['vinculo'].touched) {
+        <span class="error-message">
+          <div *ngIf="form['vinculo'].errors?.['required']">Tipo de vínculo é obrigatório</div>
+        </span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Áreas de Atuação*</label>
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" name="areas" (change)="onAreaChange($event)" value="ensino" required />
+          Ensino
+        </label>
+        <label>
+          <input type="checkbox" name="areas" (change)="onAreaChange($event)" value="pesquisa" required />
+          Pesquisa
+        </label>
+        <label>
+          <input type="checkbox" name="areas" (change)="onAreaChange($event)" value="extensao" required />
+          Extensão
+        </label>
+      </div>
+      @if (form['areas'].invalid && form['areas'].touched) {
+        <span class="error-message">
+          <div *ngIf="form['areas'].errors?.['required']">Selecione pelo menos uma área</div>
+        </span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="bio">Biografia*</label>
+      <textarea id="bio" name="bio" formControlName="bio" required></textarea>
+      @if (form['bio'].invalid && form['bio'].touched) {
+        <span class="error-message">
+          <div *ngIf="form['bio'].errors?.['required']">Biografia é obrigatória</div>
+          <div *ngIf="form['bio'].errors?.['minlength']">Biografia deve ter no mínimo 10 caracteres</div>
+        </span>
+      }
+    </div>
+
+    <div class="form-actions">
+      <app-button type="submit" theme="btn-view">Salvar</app-button>
+      <app-button (click)="cancel()">Cancelar</app-button>
+    </div>
+  </form>
+</div>

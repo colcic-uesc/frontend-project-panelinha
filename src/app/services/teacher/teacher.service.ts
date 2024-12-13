@@ -24,7 +24,7 @@ export class TeacherService {
     return this.http.get<Teacher[]>(this.apiUrl, { headers: this.getHeaders() });
   }
 
-  getTeacherById(id: string) {
+  getTeacherById(id: number) {
     return this.http.get<Teacher>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
   }
 

@@ -23,7 +23,7 @@ export class TeacherDetailsComponent {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.teacherService.getTeacherById(id).subscribe({
+      this.teacherService.getTeacherById(Number(id)).subscribe({
         next: (data) => this.teacher = data,
         error: () => alert('Erro ao buscar os detalhes do professor.')
       });
