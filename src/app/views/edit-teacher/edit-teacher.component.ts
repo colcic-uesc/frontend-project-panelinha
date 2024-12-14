@@ -15,11 +15,12 @@ import { ButtonComponent } from "../../components/button/button.component";
 export class EditTeacherComponent {
   teacherForm!: FormGroup;
   teacherId!: number;
-  departments = [
-    { value: 'DCET', label: 'DCET' },
-    { value: 'DFCH', label: 'DFCH' },
-    { value: 'DLA', label: 'DLA' }
+  areaOptions = [
+    { value: 'ensino', label: 'Ensino' },
+    { value: 'pesquisa', label: 'Pesquisa' },
+    { value: 'extensao', label: 'Extensão' }
   ];
+
 
   constructor(
     private fb: FormBuilder,
@@ -41,11 +42,7 @@ export class EditTeacherComponent {
       phone: ['(75) 99192-2151', [Validators.required, Validators.pattern(/^\(\d{2}\) \d{5}-\d{4}$/)]],
       department: ['DCET', Validators.required],
       vinculo: ['efetivo', Validators.required],
-      areas: this.fb.array([
-        this.fb.control('ensino'),
-        this.fb.control('pesquisa'),
-        this.fb.control('extensao')
-      ], Validators.required),
+      areas: this.fb.array([], Validators.required),
       bio: ['AAAAAAaaaaaaaaaaaaaaAAA', [Validators.required, Validators.minLength(10)]]
     });
   }
@@ -54,23 +51,25 @@ export class EditTeacherComponent {
     this.teacherService.getTeacherById(this.teacherId).subscribe(data => {
       this.teacherForm.patchValue(data);
 
-      const phone = this.teacherForm.get('phone')?.value;
+      /* const phone = this.teacherForm.get('phone')?.value;
       if (phone) {
         this.teacherForm.get('phone')?.setValue(this.formatPhone(phone), { emitEvent: false });
-      }
+      } */
     });
   }
 
   formatPhone(event: any) {
-    let input = event.target.value.replace(/\D/g, '');
+    /* let input = event.target.value.replace(/\D/g, ''); */
+    let input = event.target.value || event;
+    let value = input.replace(/\D/g, '');
     let formatted = '';
 
-    if (input.length > 0) {
-      formatted += '(' + input.substring(0, 2);
-      if (input.length > 2) {
-        formatted += ') ' + input.substring(2, 7);
-        if (input.length > 7) {
-          formatted += '-' + input.substring(7, 11);
+    if (value.length > 0) {
+      formatted += '(' + value.substring(0, 2);
+      if (value.length > 2) {
+        formatted += ') ' + value.substring(2, 7);
+        if (value.length > 7) {
+          formatted += '-' + value.substring(7, 11);
         }
       }
     }
@@ -81,6 +80,7 @@ export class EditTeacherComponent {
   onSubmit() {
     if (this.teacherForm.valid) {
       this.teacherService.updateTeacher({ ...this.teacherForm.value, id: this.teacherId }).subscribe(() => {
+        alert('Professor atualizado com sucesso.');
         this.router.navigate(['/teachers']);
       });
     } else {
@@ -98,21 +98,27 @@ export class EditTeacherComponent {
     });
   }
 
-  get form() { return this.teacherForm.controls; }
-
-  onAreaChange(event: any) {
+  onAreaChange(event: any, value: string) {
     const areas = this.teacherForm.get('areas') as FormArray;
     if (event.target.checked) {
-      areas.push(this.fb.control(event.target.value));
+      areas.push(this.fb.control(value));
     } else {
-      const index = areas.controls.findIndex(x => x.value === event.target.value);
+      const index = areas.controls.findIndex(control => control.value === value);
       if (index >= 0) {
         areas.removeAt(index);
       }
     }
   }
 
+  isChecked(value: string): boolean {
+    const areas = this.teacherForm.get('areas') as FormArray;
+    return areas.value.includes(value);
+  }
+
   cancel() {
     this.router.navigate(['/teachers']);
   }
+
+  get form() { return this.teacherForm.controls; }
+
 }

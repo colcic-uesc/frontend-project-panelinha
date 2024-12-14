@@ -14,11 +14,6 @@ import { TeacherService } from '../../services/teacher/teacher.service';
 })
 export class NewTeacherComponent {
   teacherForm!: FormGroup;
-  departments = [
-    { value: 'DCET', label: 'DCET' },
-    { value: 'DFCH', label: 'DFCH' },
-    { value: 'DLA', label: 'DLA' }
-  ];
 
   constructor(
     private teacherService: TeacherService,
@@ -78,6 +73,7 @@ export class NewTeacherComponent {
   onSubmit() {
     if (this.teacherForm.valid) {
       this.teacherService.addTeacher(this.teacherForm.value).subscribe(() => {
+        alert('Professor criado com sucesso.');
         this.router.navigate(['/teachers']);
       });
     } else {

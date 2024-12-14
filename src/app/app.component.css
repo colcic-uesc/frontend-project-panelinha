@@ -1,0 +1,12 @@
+.login-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  gap: 1rem;
+}
+
+.login-info small {
+  color: var(--text-color);
+  font-weight: 500;
+}

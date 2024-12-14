@@ -27,10 +27,12 @@ export class TeachersComponent {
   }
 
   deleteTeacher(id: number) {
-    console.log('Teacher deleted');
-    this.teacherService.deleteTeacher(id).subscribe(() => {
-      this.teachers = this.teachers.filter(teacher => teacher.id !== id);
-    });
+    if (confirm('Deseja realmente excluir este professor?')) {
+      this.teacherService.deleteTeacher(id).subscribe(() => {
+        alert('Professor excluído com sucesso.');
+        this.teachers = this.teachers.filter(teacher => teacher.id !== id);
+      });
+    }
   }
 
 }

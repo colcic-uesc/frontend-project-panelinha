@@ -1,8 +1,15 @@
 <div class="content">
   <app-header></app-header>
   <main class="main">
+    <div class="login-info">
+      @if (isAuthenticated) {
+        <small>Usuário autenticado ✅</small>
+      } @else {
+        <small>Usuário não autenticado ❌</small>
+        <app-button theme="btn-view" (click)="login()">Login</app-button>
+      }
+    </div>
+
     <router-outlet />
   </main>
 </div>
-
-

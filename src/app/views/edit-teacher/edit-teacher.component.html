@@ -49,7 +49,7 @@
       <label for="department">Departamento*</label>
       <select id="department" name="department" formControlName="department" [ngClass]="{'error': form['department'].invalid && form['department'].touched}" required>
         <option value="">Selecione...</option>
-        <option value="DCET">DCET</option>
+        <option value="DCE">DCE</option>
         <option value="DFCH">DFCH</option>
         <option value="DLA">DLA</option>
       </select>
@@ -82,17 +82,14 @@
     <div class="form-group">
       <label>Áreas de Atuação*</label>
       <div formArrayName="areas" class="checkbox-group">
-        <label>
-          <input type="checkbox" name="areas" formControlName="0" (change)="onAreaChange($event)" value="ensino" required />
-          Ensino
-        </label>
-        <label>
-          <input type="checkbox" name="areas" formControlName="1" (change)="onAreaChange($event)" value="pesquisa" required />
-          Pesquisa
-        </label>
-        <label>
-          <input type="checkbox" name="areas" formControlName="2" (change)="onAreaChange($event)" value="extensao" required />
-          Extensão
+        <label *ngFor="let area of areaOptions; let i = index">
+          <input
+            type="checkbox"
+            [value]="area.value"
+            (change)="onAreaChange($event, area.value)"
+            [checked]="isChecked(area.value)"
+          />
+          {{ area.label }}
         </label>
       </div>
       @if (form['areas'].invalid && form['areas'].touched) {

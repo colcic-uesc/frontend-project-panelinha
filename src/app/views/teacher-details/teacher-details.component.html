@@ -5,13 +5,13 @@
 
   <div class="teacher-card">
     <div class="teacher-info">
-      <h3>Nome: <span>João da Silva</span></h3>
-      <p>Email: <span>joao.silva&#64;example.com</span></p>
+      <h3>Nome: <span>{{ teacher?.name }}</span></h3>
+      <p>Email: <span>{{ teacher?.email }}</span></p>
       <p>Telefone: <span>11 99999-9999</span></p>
-      <p>Departamento: <span>DCE</span></p>
+      <p>Departamento: <span>{{ teacher?.department }}</span></p>
       <p>Tipo de vínculo: <span>Efetivo</span></p>
       <p>Áreas de atuação: <span>Ensino, Pesquisa, Extensão</span></p>
-      <p>Biografia: <span>Professor do curso de Ciência da Computação na Universidade Estadual de Santa Cruz.</span></p>
+      <p>Biografia: <span>{{ teacher?.bio }}</span></p>
     </div>
   </div>
 
